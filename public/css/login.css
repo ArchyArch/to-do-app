@@ -31,3 +31,69 @@ main {
     margin-right: 10px;
     font-weight: bold;
 }
+
+.inputs-login {
+    display: flex;
+    width: 20%;
+    justify-content: center;
+}
+
+.icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 20px;
+    position: relative;
+    bottom: 12px;
+}
+
+.icons .fa-lock {
+    position: relative;
+    bottom: 19px;
+}
+
+.inputs-login form input[name="mail"],
+.inputs-login form input[name="psw"]
+ {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #dfdada;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #4d4a4a;
+}
+
+.inputs-login form input[name="sub"] {
+    background-color: rgb(216, 68, 68);
+    border: 1px solid rgb(216, 68, 68);
+    border-radius: 3px;
+    color: white;
+    width: 100%;
+    padding: 9px;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+.inputs-login form input[name="sub"]:hover {
+    background-color: rgb(216, 68, 68);
+    border: 1px solid rgb(216, 68, 68);
+    border-radius: 3px;
+    color: white;
+    width: 100%;
+    padding: 9px;
+    box-sizing: border-box;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.logo-name{
+    display: flex;
+    justify-content: center;
+    color: rgb(216, 68, 68);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.fa-tasks {
+    position: relative;
+    top: 40px;
+    right: 20px;
+}
