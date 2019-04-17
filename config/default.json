@@ -1,0 +1,4 @@
+{
+    "db": "mongodb+srv://todoapp:1iqfzGn1WoVbco6u@tdacluster-wmftl.gcp.mongodb.net/todoapp?retryWrites=true",
+    "jwtPrivateKey": ""
+}
