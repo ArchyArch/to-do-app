@@ -7,8 +7,10 @@ if (!config.get('jwtPrivateKey')) {
     process.exit(1);
 }
 
+const regRouter = require('./routes/register');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
+const dashboardRouter = require('./routes/dashboard');
 
 const app = express();
 
@@ -17,8 +19,10 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.json());
 
+app.use('/register', regRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
+app.use('/dashboard', dashboardRouter);
 
 app.get('/', (req, res, next) => {
     res.render('login');

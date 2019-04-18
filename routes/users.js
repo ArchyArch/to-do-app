@@ -27,7 +27,10 @@ router.post('/', async (req, res) => {
 
     const token = user.generateAuthToken();
 
-    res.header('x-auth-token', token).send(_.pick(user, ['_id', 'email']));
+    let xhr = new XMLHttpRequest();
+    await xhr.open('GET', `/dashboard/:${user._id}`, true);
+    xhr.setRequestHeader('x-auth-token', token);
+    xhr.send()
 })
 
 module.exports = router;
