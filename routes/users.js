@@ -1,3 +1,4 @@
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const express = require('express');
@@ -28,9 +29,11 @@ router.post('/', async (req, res) => {
     const token = user.generateAuthToken();
 
     let xhr = new XMLHttpRequest();
-    await xhr.open('GET', `/dashboard/:${user._id}`, true);
+    await xhr.open('GET', `http://localhost:3000/dashboard/:${user._id}`, true);
     xhr.setRequestHeader('x-auth-token', token);
     xhr.send()
+
+    res.status(201).send(user);
 })
 
 module.exports = router;

@@ -1,3 +1,4 @@
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -27,9 +28,11 @@ router.post('/', async (req, res) => {
     const token = user.generateAuthToken();
 
     let xhr = new XMLHttpRequest();
-    await xhr.open('GET', `/dashboard/:${user._id}`, true);
+    await xhr.open('GET', `http://localhost:3000/dashboard/${user._id}`, true);
     xhr.setRequestHeader('x-auth-token', token);
     xhr.send()
+
+    res.status(200).send(token);
 })
 
 module.exports = router;
