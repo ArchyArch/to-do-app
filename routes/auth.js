@@ -1,10 +1,6 @@
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-const config = require('config');
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const _ = require('lodash');
 const {User, validate} = require('../models/user');
-const mongoose = require('mongoose');
 const express = require('express');
 
 const router = express.Router();
@@ -12,16 +8,31 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     const {error} = validate(req.body);
     if (error) {
+        let xhr = new XMLHttpRequest();
+        await xhr.open('GET', `http://localhost:3000/login/failed`, true);
+        xhr.setRequestHeader('x-failure-reason', error.details[0].message);
+        xhr.send();
+
         return res.status(400).send(error.details[0].message);
     }
 
     let user = await User.findOne({ email: req.body.email });
     if (!user) {
+        let xhr = new XMLHttpRequest();
+        await xhr.open('GET', `http://localhost:3000/login/failed`, true);
+        xhr.setRequestHeader('x-failure-reason', 'Invalid email or password.');
+        xhr.send();
+
         return res.status(400).send('Invalid email or password.');
     }
 
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (!validPassword) {
+        let xhr = new XMLHttpRequest();
+        await xhr.open('GET', `http://localhost:3000/login/failed`, true);
+        xhr.setRequestHeader('x-failure-reason', 'Invalid email or password.');
+        xhr.send();
+        
         return res.status(400).send('Invalid email or password.');
     }
 

@@ -1,6 +1,4 @@
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-const jwt = require('jsonwebtoken');
-const config = require('config');
 const express = require('express');
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
@@ -11,11 +9,21 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     const {error} = validate(req.body);
     if (error) {
+        let xhr = new XMLHttpRequest();
+        await xhr.open('GET', 'http://localhost:3000/register/failed');
+        xhr.setRequestHeader('x-failure-reason', error.details[0].message);
+        xhr.send();
+
         return res.status(400).send(error.details[0].message);
     }
 
     let user = await User.findOne({ email: req.body.email });
     if (user) {
+        let xhr = new XMLHttpRequest();
+        await xhr.open('GET', 'http://localhost:3000/register/failed');
+        xhr.setRequestHeader('x-failure-reason', 'User already registered.');
+        xhr.send();
+        
         return res.status(400).send('User already registered.');
     }
 
@@ -31,7 +39,7 @@ router.post('/', async (req, res) => {
     let xhr = new XMLHttpRequest();
     await xhr.open('GET', `http://localhost:3000/dashboard/:${user._id}`, true);
     xhr.setRequestHeader('x-auth-token', token);
-    xhr.send()
+    xhr.send();
 
     res.status(201).send(user);
 })
