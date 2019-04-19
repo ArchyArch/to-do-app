@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
+const auth = require('./middleware/auth');
 
 if (!config.get('jwtPrivateKey')) {
     console.error('Error: jwtPrivateKey is not defined.');
@@ -24,7 +25,7 @@ app.use('/login', loginRouter);
 app.use('/register', regRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
-app.use('/dashboard', dashboardRouter);
+app.use('/dashboard', auth, dashboardRouter);
 
 //lets keep what is below on the bottom (?)
 const port = process.env.PORT || 3000;
