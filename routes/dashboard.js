@@ -9,7 +9,6 @@ router.get('/:id', async (req, res, next) => {
 
         return res.status(400).send("User's dashboard not found.");
     }
-    // console.log('Got it.')
     res.render('dashboard', user);
 })
 
