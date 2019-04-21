@@ -1,5 +1,6 @@
 {
     "db": "mongodb+srv://todoapp:1iqfzGn1WoVbco6u@tdacluster-wmftl.gcp.mongodb.net/todoapp?retryWrites=true",
     "jwtPrivateKey": "",
-    "fbAppSecret": "290496731b311a9770e2ac3163f9cb3a"
+    "fbAppSecret": "290496731b311a9770e2ac3163f9cb3a",
+    "googleSecret": "t0s1isHjAjxoCPwJwuGxGFtU"
 }

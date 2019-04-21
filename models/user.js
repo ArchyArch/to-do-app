@@ -20,7 +20,8 @@ const userSchema = new mongoose.Schema({
     lists: {
         type: Array
     },
-    facebookId: Number
+    facebookId: Number,
+    googleId: Number
 })
 
 userSchema.methods.generateAuthToken = function() {

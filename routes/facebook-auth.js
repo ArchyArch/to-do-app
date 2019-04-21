@@ -4,7 +4,6 @@ const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const config = require('config');
 const {User} = require('../models/user');
-const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 passport.use(new FacebookStrategy({
     clientID: 350663588907201,
