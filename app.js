@@ -34,6 +34,10 @@ app.use('/dashboard', auth, dashboardRouter);
 app.use('/viafb', fbAuthRouter);
 app.use('/viagoogle', gAuthRouter);
 
+app.get('/dtest', (req, res, next) => {
+    res.render('dashboard');
+})
+
 //lets keep what is below on the bottom (?)
 const port = process.env.PORT || 3000;
 
