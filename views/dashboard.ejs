@@ -7,6 +7,8 @@
     <title>ToDo App dashboard</title>
     <link href="materialize/css/materialize.css" rel="stylesheet" type="text/css">
     <link href="css/dashboard.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
     <nav>
@@ -24,7 +26,23 @@
             </div>
             <div class="col s12 m7">
                 <div class="rightbar-wrapper">
-                    <!-- delete me and start working :) -->
+                    <div class="container">
+                        <div id="main" class="card card-body">
+                            <div class=title>
+                                <h4>Today<h6 class="data">Tue Dec 5</h6></h4>
+                            </div>
+                            <ul id="items" class="list-group">
+                                <li class="list-group-item">30 minutes of cardio<button
+                                        class="delete">X</button></li>
+                                <li class="list-group-item">Confirm visit with Klara<button
+                                        class="delete">X</button></li>
+                            </ul>
+                            <form id="addForm" class="form-inline mb-3">
+                                <input type="submit" class="sub" value="+">
+                                <input type="text" class="form-control mr-2" id="item" placeholder="Add Task"> 
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col m1 blank hide-on-small-only"></div>
