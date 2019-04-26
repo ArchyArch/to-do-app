@@ -39,3 +39,69 @@ body {
         min-height: 0px;
     }
 }
+
+/*RightBar*/
+#main{
+    padding: 20px;
+    padding-top: 5px;
+    color: rgb(95, 95, 95);
+}
+
+.list-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.list-group-item{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(95, 95, 95);
+}
+
+.form-inline{
+    display: flex;
+}
+
+.sub{
+    background-color: transparent;
+    border: none;
+}
+
+
+.form-control {
+    border-bottom: 0px;
+}
+
+.btn-dark{
+    background-color: blueviolet;
+}
+
+input[value="+"] {
+    color: rgba(219, 54, 54, 0.76);
+    font-weight: 400;
+    font-size: 30px;
+}
+
+#item::-webkit-input-placeholder {
+    color: rgba(219, 54, 54, 0.76);
+}
+ 
+#item::-moz-placeholder {
+    color: rgba(219, 54, 54, 0.637);
+}
+
+.delete{
+    border: none;
+    color: rgba(219, 54, 54, 0.925);
+    background-color: rgba(206, 206, 206, 0.616);
+}
+
+.title{
+    display: flex;
+}
+
+.data {
+    position: relative;
+    top: 23px;
+    left: 10px;
+}
