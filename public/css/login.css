@@ -134,3 +134,12 @@ main {
   flex-flow: column wrap;
   justify-content: center;
 }
+
+.paragraphs {
+  text-align: center;
+  margin-left: 2.5em;
+}
+
+a {
+  color: #dd4b39;
+}
