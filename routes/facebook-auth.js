@@ -4,6 +4,7 @@ const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const config = require('config');
 const {User} = require('../models/user');
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 passport.use(new FacebookStrategy({
     clientID: 350663588907201,
@@ -17,13 +18,19 @@ passport.use(new FacebookStrategy({
         const hashed = await bcrypt.hash(profile.displayName, salt);
 
         user = new User({
-            email: profile.emails[0].value,
+            email: `fb${profile.emails[0].value}`,
             password: hashed,
             facebookId: profile.id
         });
 
-        await user.save(function (err) {
-            if (err) console.log(err);
+        await user.save(async function (err) {
+            if (err) {
+                let xhr = new XMLHttpRequest();
+                await xhr.open('GET', `http://localhost:3000/login/failed`, true);
+                xhr.setRequestHeader('x-failure-reason', 'Something went wrong with fb login/register.');
+                xhr.send();
+                console.log(err);
+            }
             return cb(err, user);
         });
     } else {

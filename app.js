@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
-const auth = require('./middleware/auth');
 const passport = require('passport');
 
 if (!config.get('jwtPrivateKey')) {
@@ -30,12 +29,16 @@ app.use('/login', loginRouter);
 app.use('/register', regRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
-app.use('/dashboard', auth, dashboardRouter);
+app.use('/dashboard', dashboardRouter);
 app.use('/viafb', fbAuthRouter);
 app.use('/viagoogle', gAuthRouter);
 
 app.get('/dtest', (req, res, next) => {
     res.render('dashboard');
+})
+
+app.get('/', async (req, res, next) => {
+    res.redirect('/login')
 })
 
 //lets keep what is below on the bottom (?)

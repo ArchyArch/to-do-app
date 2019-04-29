@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
         minlength: 6,
         maxlength: 1024
     },
-    lists: {
+    list: {
         type: Array
     },
     facebookId: Number,
