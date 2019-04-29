@@ -47,6 +47,10 @@ main {
     bottom: 12px;
 }
 
+.icons-hidden {
+  visibility: hidden;
+}
+
 .icons .fa-lock {
     position: relative;
     bottom: 19px;
@@ -96,4 +100,37 @@ main {
     position: relative;
     top: 40px;
     right: 20px;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+}
+
+.ist_button_google:hover, .ist_button_facebook:hover {
+  box-shadow: 0 0 2px 0 rgba(0,0,0,0.12),0 2px 2px 0 rgba(0,0,0,0.24);
+  }
+
+.ist_button_google, .ist_button_facebook   {
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #dfdada;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #4d4a4a;
+    min-width: 365px;
+    padding: 9px;
+    box-sizing: border-box;
+    cursor: pointer;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.05),0 2px 2px 0 rgba(0,0,0,0.05);
+  }
+
+.all_buttons > * {
+  margin-bottom: 10px;
+}
+
+.all_buttons {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
 }
