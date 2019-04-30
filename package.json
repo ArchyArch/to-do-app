@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ArchyArch/to-do-app#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "bcrypt": "^3.0.6",
     "config": "^3.1.0",
     "ejs": "^2.6.1",
@@ -28,6 +29,7 @@
     "passport": "^0.4.0",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth": "^2.0.0",
+    "uniq": "^1.0.1",
     "xmlhttprequest": "^1.8.0"
   }
 }

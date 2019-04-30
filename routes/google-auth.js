@@ -3,7 +3,8 @@ const express = require('express');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const config = require('config');
-const {User} = require('../models/user')
+const {User} = require('../models/user');
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 passport.use(new GoogleStrategy({
     clientID: '795838790756-gonmujcteqn6ibiia2mlnd777452jam3.apps.googleusercontent.com',
@@ -16,13 +17,19 @@ passport.use(new GoogleStrategy({
         const hashed = await bcrypt.hash(profile.displayName, salt);
 
         user = new User({
-            email: profile.emails[0].value,
+            email: `google${profile.emails[0].value}`,
             password: hashed,
             googleId: profile.id
         });
 
-        await user.save(function (err) {
-            if (err) console.log(err);
+        await user.save(async function (err) {
+            if (err) {
+                console.log(err);
+                let xhr = new XMLHttpRequest();
+                await xhr.open('GET', `http://localhost:3000/login/failed`, true);
+                xhr.setRequestHeader('x-failure-reason', 'Something went wrong with google login/register.');
+                xhr.send();
+            }
             return done(err, user);
         });
     } else {
